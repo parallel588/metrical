@@ -20,6 +20,8 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency "metric_fu", "~> 2.1.1"
   s.add_runtime_dependency "ci_reporter"
+  s.add_runtime_dependency "simplecov"
+  s.add_runtime_dependency "simplecov-rcov"
   s.add_runtime_dependency "rcov", "~> 0.9"
   s.add_development_dependency "rspec", "~> 2.8"
 end
