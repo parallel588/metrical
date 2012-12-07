@@ -23,5 +23,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "simplecov"
   s.add_runtime_dependency "simplecov-rcov"
   s.add_runtime_dependency "rcov", "~> 0.9"
+  s.add_runtime_dependency "flog"
   s.add_development_dependency "rspec", "~> 2.8"
 end
