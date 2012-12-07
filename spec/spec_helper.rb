@@ -2,6 +2,12 @@ require 'bundler/setup'
 require 'metrical'
 require 'rspec'
 
+require 'simplecov'
+require 'simplecov-rcov'
+
+SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
+SimpleCov.start 'rails'
+
 RSpec::Matchers.define :create_file do |expected|
 
   match do |block|
