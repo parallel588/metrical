@@ -18,11 +18,10 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_runtime_dependency "metric_fu", "~> 2.1.1"
-  s.add_runtime_dependency "ci_reporter"
+  s.add_runtime_dependency "metric_fu", ">= 4.1.0"
+  s.add_runtime_dependency "ci_reporter", "~> 1.8.4"
   s.add_runtime_dependency "simplecov"
   s.add_runtime_dependency "simplecov-rcov"
-  s.add_runtime_dependency "rcov", "~> 0.9"
   s.add_runtime_dependency "flog"
-  s.add_development_dependency "rspec", "~> 2.8"
+  s.add_development_dependency "rspec", "~> 2.13.0"
 end

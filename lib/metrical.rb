@@ -5,9 +5,11 @@ require 'rubygems'
 require 'json'
 require 'metric_fu'
 
-# Required for RCOV
-require 'active_support'
-require 'active_support/core_ext'
+MetricFu::Report.class_eval do
+  def [](v)
+    report_hash[v]
+  end
+end
 
 module Metrical
   extend self
@@ -15,7 +17,6 @@ module Metrical
   def run(argv)
     options = Options.parse(argv)
     load_defaults
-    set_new_rcov_defaults
     load_user_configuration
     disable_metrics(options)
     run_metric_fu
@@ -35,23 +36,6 @@ module Metrical
 
   def load_defaults
     MetricFu::Configuration.run {}
-  end
-
-  def set_new_rcov_defaults
-    test_files = Dir['{spec,test}/**/*_{spec,test}.rb']
-    MetricFu::Configuration.run do |config|
-      config.rcov[:test_files] = test_files
-      config.rcov[:rcov_opts] = [
-        "--sort coverage",
-        "--no-html",
-        "--text-coverage",
-        "--no-color",
-        "--profile",
-        "--exclude-only '.*'",
-        '--include-file "\Aapp,\Alib"'
-      ]
-      config.rcov[:rcov_opts] << "-Ispec" if File.exist?("spec")
-    end
   end
 
   def load_user_configuration
